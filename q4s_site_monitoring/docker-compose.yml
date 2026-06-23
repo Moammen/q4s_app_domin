@@ -4,22 +4,18 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: q4s_site_monitoring_web
-    command: >
-      sh -c "python manage.py migrate &&
-             python manage.py shell
-             -c \"import os;
-              from django.contrib.auth import get_user_model;
-              User = get_user_model();
-              username=os.environ.get('DJANGO_SUPERUSER_USERNAME');
-              email=os.environ.get('DJANGO_SUPERUSER_EMAIL');
-              password=os.environ.get('DJANGO_SUPERUSER_PASSWORD');
-              user, created = User.objects.get_or_create(username=username, defaults={'email': email, 'is_staff': True, 'is_superuser': True});
-              user.email=email;
-              user.is_staff=True;
-              user.is_superuser=True;
-              user.set_password(password);
-            user.save()\" &&
-             python manage.py runserver 0.0.0.0:8008"
+    command: >-
+      sh -c
+      "python manage.py migrate &&
+       python manage.py shell -c \"
+       import os;
+       from django.contrib.auth import get_user_model;
+       User = get_user_model();
+       u, _ = User.objects.get_or_create(username=os.environ.get('DJANGO_SUPERUSER_USERNAME'), defaults={'email': os.environ.get('DJANGO_SUPERUSER_EMAIL'), 'is_staff': True, 'is_superuser': True});
+       u.set_password(os.environ.get('DJANGO_SUPERUSER_PASSWORD'));
+       u.is_staff=True; u.is_superuser=True; u.save()
+       \" &&
+       python manage.py runserver 0.0.0.0:8008"
     ports:
       - "1887:8008"
     volumes:
