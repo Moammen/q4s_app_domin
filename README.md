@@ -55,6 +55,7 @@ docker compose exec web python manage.py seed
 
 ---
 
+
 ## Users (after seed)
 
 | Username | Password | Role |
