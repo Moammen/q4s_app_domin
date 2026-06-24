@@ -255,14 +255,14 @@ def calculate_site_billing(site, start_date, end_date):
         drop = contracted_delta_t - avg_delta_t - tolerance_delta_t
         delta_t_drop = round(drop, 4)
         if drop > 0:
-            delta_t_fees = (drop + tolerance_delta_t) * rate_delta_t * float(declared_load_fee)
+            delta_t_fees = (drop + tolerance_delta_t) * rate_delta_t * float(consumption_fee)
             delta_t_fees_formula = (
-                "(drop + tolerance) × rate × declared_load_fee"
+                "(drop + tolerance) × rate × consumption fee"
             )
             delta_t_fees_formula_values = (
                 f"({round(drop, 4)} + {round(tolerance_delta_t, 4)}) "
                 f"× {round(rate_delta_t, 4)} "
-                f"× {round(declared_load_fee, 2)} "
+                f"× {round(consumption_fee, 2)} "
                 f"= {round(delta_t_fees, 2)}"
             )
 
