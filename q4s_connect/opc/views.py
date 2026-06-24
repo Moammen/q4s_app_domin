@@ -1671,12 +1671,14 @@ class OPCSiteDashboardView(APIView):
                 "avg_return_temp":    data["avg_return_temp"],
                 "avg_flow":           data["avg_flow"],
                 "avg_power":          data["avg_power"],
-                "contracted_delta_t": data["contracted_delta_t"],
-                "delta_t_drop":       data["delta_t_drop"],
-                "is_low_delta_t":     data["is_low_delta_t"],
-                "period_days":        data["period_days"],
-                "readings_count":     data["readings_count"],
-                "billing_date":       data["billing_date"],
+                "contracted_delta_t":          data["contracted_delta_t"],
+                "delta_t_drop":                data["delta_t_drop"],
+                "is_low_delta_t":              data["is_low_delta_t"],
+                "delta_t_fees_formula":        data["delta_t_fees_formula"],
+                "delta_t_fees_formula_values": data["delta_t_fees_formula_values"],
+                "period_days":                 data["period_days"],
+                "readings_count":              data["readings_count"],
+                "billing_date":                data["billing_date"],
             }
 
         # ── Filtered Billing (complete months only within from_date / to_date) ─
@@ -1734,12 +1736,14 @@ class OPCSiteDashboardView(APIView):
                         "avg_return_temp":    data["avg_return_temp"],
                         "avg_flow":           data["avg_flow"],
                         "avg_power":          data["avg_power"],
-                        "contracted_delta_t": data["contracted_delta_t"],
-                        "delta_t_drop":       data["delta_t_drop"],
-                        "is_low_delta_t":     data["is_low_delta_t"],
-                        "period_days":        data["period_days"],
-                        "readings_count":     data["readings_count"],
-                        "billing_date":       data["billing_date"],
+                        "contracted_delta_t":          data["contracted_delta_t"],
+                        "delta_t_drop":                data["delta_t_drop"],
+                        "is_low_delta_t":              data["is_low_delta_t"],
+                        "delta_t_fees_formula":        data["delta_t_fees_formula"],
+                        "delta_t_fees_formula_values": data["delta_t_fees_formula_values"],
+                        "period_days":                 data["period_days"],
+                        "readings_count":              data["readings_count"],
+                        "billing_date":                data["billing_date"],
                     })
 
                 # Advance to next month

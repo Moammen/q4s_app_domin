@@ -238,19 +238,30 @@ def calculate_site_billing(site, start_date, end_date):
     delta_t_fees = 0.0
 
     delta_t_drop = None
+    delta_t_fees_formula        = None
+    delta_t_fees_formula_values = None
+
     if avg_delta_t is not None:
         avg_delta_t = float(abs(avg_delta_t))
         drop = contracted_delta_t - avg_delta_t - tolerance_delta_t
         delta_t_drop = round(drop, 4)
         if drop > 0:
             delta_t_fees = (drop + tolerance_delta_t) * rate_delta_t * float(declared_load_fee)
+            delta_t_fees_formula = (
+                "(drop + tolerance) × rate × declared_load_fee"
+            )
+            delta_t_fees_formula_values = (
+                f"({round(drop, 4)} + {round(tolerance_delta_t, 4)}) "
+                f"× {round(rate_delta_t, 4)} "
+                f"× {round(declared_load_fee, 2)} "
+                f"= {round(delta_t_fees, 2)}"
+            )
 
     total = declared_load_fee + delta_t_fees + consumption_fee
 
     return {
         # ── Core billing fields (stored in ETSSiteBilling) ──
         "average_delta_t":   avg_delta_t,
-        "delta_t_drop":      delta_t_drop,
         "delta_t_fees":      round(delta_t_fees, 2),
         "consumption":       round(consumption, 4),
         "consumption_fee":   round(consumption_fee, 2),
@@ -270,9 +281,11 @@ def calculate_site_billing(site, start_date, end_date):
         "avg_power":         round(avg_power, 2) if avg_power is not None else None,
 
         # ── Delta-T analysis ──
-        "contracted_delta_t": contracted_delta_t,
-        "delta_t_drop":       delta_t_drop,          # positive = penalised, negative = healthy
-        "is_low_delta_t":     delta_t_drop is not None and delta_t_drop > 0,
+        "contracted_delta_t":        contracted_delta_t,
+        "delta_t_drop":              delta_t_drop,
+        "is_low_delta_t":            delta_t_drop is not None and delta_t_drop > 0,
+        "delta_t_fees_formula":       delta_t_fees_formula,
+        "delta_t_fees_formula_values": delta_t_fees_formula_values,
 
         # ── Period metadata ──
         "period_days":       period_days,
