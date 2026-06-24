@@ -59,6 +59,8 @@ services:
       - CELERY_BROKER_URL=redis://redis:6379/0
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
       # Public monitoring domain (links opened in a browser must resolve)
+      # Both point to the public monitoring domain (host.docker.internal:1887 is not
+      # reachable from this container; the Cloudflare hairpin works and authenticates).
       - EXTERNAL_SERVER_UI_BASE_URL=https://q4sconnect-sitemonitoring-demo.q4s.app
       - EXTERNAL_SERVER_BACKEND_BASE_URL=https://q4sconnect-sitemonitoring-demo.q4s.app
     extra_hosts:

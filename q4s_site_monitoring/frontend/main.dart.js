@@ -107636,7 +107636,7 @@ s($,"beQ","aMW",()=>A.b4c())
 s($,"beg","aIF",()=>A.aJK(t.K))
 s($,"beq","aWy",()=>new A.n())
 s($,"bgn","aXR",()=>!t.Cm.b(A.b([],t.Z)))
-s($,"bd2","aVP",()=>{var q=A.aZa("http://localhost:1887/",B.or,A.ap(["Content-Type","application/json"],t.N,t.z),B.HE),p=A.aUK(),o=new A.Qv(A.b([B.DE],A.ab("y<ik?>")))
+s($,"bd2","aVP",()=>{var q=A.aZa("https://q4sconnect-sitemonitoring-demo.q4s.app/",B.or,A.ap(["Content-Type","application/json"],t.N,t.z),B.HE),p=A.aUK(),o=new A.Qv(A.b([B.DE],A.ab("y<ik?>")))
 o.O(o,B.LZ)
 o=new A.a8Y(p,o,A.aUK(),new A.acD(51200),!1)
 o.a_g$=q
