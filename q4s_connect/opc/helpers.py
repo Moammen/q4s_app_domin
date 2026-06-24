@@ -238,7 +238,7 @@ def calculate_site_billing(site, start_date, end_date):
     declared_load_fee        = float(site.declared_load_fee or 0)
     delta_t_fees             = 0.0
 
-    other_fees = float(site.other_fees or 0)
+    other_fees = float(config.other_fees or 0)
 
     consumption_fee_formula        = "consumption × consumption_fee_rate"
     consumption_fee_formula_values = (
@@ -305,6 +305,11 @@ def calculate_site_billing(site, start_date, end_date):
         # ── Declared load fee formula ──
         "declared_load_fee_formula":        declared_load_fee_formula,
         "declared_load_fee_formula_values": declared_load_fee_formula_values,
+
+        # ── Other fees ──
+        "other_fees":                       round(other_fees, 2),
+        "other_fees_formula":               "other_fees (flat additional fee)",
+        "other_fees_formula_values":        f"{round(other_fees, 2)}",
 
         # ── Period metadata ──
         "period_days":       period_days,
