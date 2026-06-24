@@ -59,8 +59,8 @@ services:
       - CELERY_BROKER_URL=redis://redis:6379/0
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
       # Public monitoring domain (links opened in a browser must resolve)
-      - EXTERNAL_SERVER_UI_BASE_URL=https://q4sconnect_sitemonitoring_demo.q4s.app
-      - EXTERNAL_SERVER_BACKEND_BASE_URL=https://q4sconnect_sitemonitoring_demo.q4s.app
+      - EXTERNAL_SERVER_UI_BASE_URL=https://q4sconnect-sitemonitoring-demo.q4s.app
+      - EXTERNAL_SERVER_BACKEND_BASE_URL=https://q4sconnect-sitemonitoring-demo.q4s.app
     extra_hosts:
       - "host.docker.internal:host-gateway"
     restart: unless-stopped

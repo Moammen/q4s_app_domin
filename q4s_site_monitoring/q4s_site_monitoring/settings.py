@@ -32,13 +32,13 @@ ALLOWED_HOSTS = [
     'localhost',
     'host.docker.internal',
     '65.108.254.94',
-    'q4sconnect_sitemonitoring_demo.q4s.app',
+    'q4sconnect-sitemonitoring-demo.q4s.app',
 ]
 
 # ─── HTTPS behind nginx / Cloudflare ──────────────────────────────────────────
 # nginx (and Cloudflare) terminate TLS and forward the original scheme.
 CSRF_TRUSTED_ORIGINS = [
-    'https://q4sconnect_sitemonitoring_demo.q4s.app',
+    'https://q4sconnect-sitemonitoring-demo.q4s.app',
 ]
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 

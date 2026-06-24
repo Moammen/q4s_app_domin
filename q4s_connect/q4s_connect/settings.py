@@ -22,13 +22,13 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
     '65.108.254.94',
-    'q4sconnect_demo.q4s.app',
+    'q4sconnect-demo.q4s.app',
 ]
 
 # ─── HTTPS behind nginx / Cloudflare ──────────────────────────────────────────
 # nginx (and Cloudflare) terminate TLS and forward the original scheme.
 CSRF_TRUSTED_ORIGINS = [
-    'https://q4sconnect_demo.q4s.app',
+    'https://q4sconnect-demo.q4s.app',
 ]
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -284,9 +284,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EXTERNAL_SERVER_UI_BASE_URL = os.environ.get(
     "EXTERNAL_SERVER_UI_BASE_URL",
-    "https://q4sconnect_sitemonitoring_demo.q4s.app",
+    "https://q4sconnect-sitemonitoring-demo.q4s.app",
 )
 EXTERNAL_SERVER_BACKEND_BASE_URL = os.environ.get(
     "EXTERNAL_SERVER_BACKEND_BASE_URL",
-    "https://q4sconnect_sitemonitoring_demo.q4s.app",
+    "https://q4sconnect-sitemonitoring-demo.q4s.app",
 )
