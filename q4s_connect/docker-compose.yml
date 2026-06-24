@@ -58,9 +58,9 @@ services:
       - POSTGRES_PORT=5432
       - CELERY_BROKER_URL=redis://redis:6379/0
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
-      # Point to the monitoring app container (via shared Docker network)
-      - EXTERNAL_SERVER_UI_BASE_URL=http://127.0.0.1:1887
-      - EXTERNAL_SERVER_BACKEND_BASE_URL=http://host.docker.internal:1887
+      # Public monitoring domain (links opened in a browser must resolve)
+      - EXTERNAL_SERVER_UI_BASE_URL=https://q4sconnect_sitemonitoring_demo.q4s.app
+      - EXTERNAL_SERVER_BACKEND_BASE_URL=https://q4sconnect_sitemonitoring_demo.q4s.app
     extra_hosts:
       - "host.docker.internal:host-gateway"
     restart: unless-stopped
