@@ -233,9 +233,18 @@ def calculate_site_billing(site, start_date, end_date):
     # consumption_fee_rate is used for both consumption and delta-T fees, as per original code.
     # ---------
 
-    consumption_fee   = consumption * float(config.consumption_fee_rate or 0)
-    declared_load_fee = float(site.declared_load_fee or 0)
-    delta_t_fees = 0.0
+    consumption_fee_rate_val = float(config.consumption_fee_rate or 0)
+    consumption_fee          = consumption * consumption_fee_rate_val
+    declared_load_fee        = float(site.declared_load_fee or 0)
+    delta_t_fees             = 0.0
+
+    consumption_fee_formula        = "consumption × consumption_fee_rate"
+    consumption_fee_formula_values = (
+        f"{round(consumption, 4)} × {round(consumption_fee_rate_val, 4)}"
+        f" = {round(consumption_fee, 2)}"
+    )
+    declared_load_fee_formula        = "declared_load_fee (flat monthly fee)"
+    declared_load_fee_formula_values = f"{round(declared_load_fee, 2)}"
 
     delta_t_drop = None
     delta_t_fees_formula        = None
@@ -286,6 +295,14 @@ def calculate_site_billing(site, start_date, end_date):
         "is_low_delta_t":            delta_t_drop is not None and delta_t_drop > 0,
         "delta_t_fees_formula":       delta_t_fees_formula,
         "delta_t_fees_formula_values": delta_t_fees_formula_values,
+
+        # ── Consumption fee formula ──
+        "consumption_fee_formula":        consumption_fee_formula,
+        "consumption_fee_formula_values": consumption_fee_formula_values,
+
+        # ── Declared load fee formula ──
+        "declared_load_fee_formula":        declared_load_fee_formula,
+        "declared_load_fee_formula_values": declared_load_fee_formula_values,
 
         # ── Period metadata ──
         "period_days":       period_days,

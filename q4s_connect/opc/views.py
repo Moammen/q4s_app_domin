@@ -1674,11 +1674,15 @@ class OPCSiteDashboardView(APIView):
                 "contracted_delta_t":          data["contracted_delta_t"],
                 "delta_t_drop":                data["delta_t_drop"],
                 "is_low_delta_t":              data["is_low_delta_t"],
-                "delta_t_fees_formula":        data["delta_t_fees_formula"],
-                "delta_t_fees_formula_values": data["delta_t_fees_formula_values"],
-                "period_days":                 data["period_days"],
-                "readings_count":              data["readings_count"],
-                "billing_date":                data["billing_date"],
+                "delta_t_fees_formula":               data["delta_t_fees_formula"],
+                "delta_t_fees_formula_values":        data["delta_t_fees_formula_values"],
+                "consumption_fee_formula":            data["consumption_fee_formula"],
+                "consumption_fee_formula_values":     data["consumption_fee_formula_values"],
+                "declared_load_fee_formula":          data["declared_load_fee_formula"],
+                "declared_load_fee_formula_values":   data["declared_load_fee_formula_values"],
+                "period_days":                        data["period_days"],
+                "readings_count":                     data["readings_count"],
+                "billing_date":                       data["billing_date"],
             }
 
         # ── Filtered Billing (complete months only within from_date / to_date) ─
