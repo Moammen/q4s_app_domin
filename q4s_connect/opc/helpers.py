@@ -238,6 +238,8 @@ def calculate_site_billing(site, start_date, end_date):
     declared_load_fee        = float(site.declared_load_fee or 0)
     delta_t_fees             = 0.0
 
+    other_fees = float(site.other_fees or 0)
+
     consumption_fee_formula        = "consumption × consumption_fee_rate"
     consumption_fee_formula_values = (
         f"{round(consumption, 4)} × {round(consumption_fee_rate_val, 4)}"
@@ -266,7 +268,7 @@ def calculate_site_billing(site, start_date, end_date):
                 f"= {round(delta_t_fees, 2)}"
             )
 
-    total = declared_load_fee + delta_t_fees + consumption_fee
+    total = declared_load_fee + delta_t_fees + consumption_fee + other_fees
 
     return {
         # ── Core billing fields (stored in ETSSiteBilling) ──
